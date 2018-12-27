@@ -8,7 +8,7 @@ Description
 
 This package provides an implementation of `conditional random field
 <https://en.wikipedia.org/wiki/Conditional_random_field>`_ (CRF) in PyTorch.
-It is a fork of https://github.com/kmkurn/pytorch-crf with some modifications to enable half-precision training and allow class-weights for handeling class label imbalance.
+It is a fork of https://github.com/kmkurn/pytorch-crf with some modifications like half-precision training support.
 
 Requirements
 ============
