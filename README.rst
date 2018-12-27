@@ -1,18 +1,6 @@
 pytorch-crf
 +++++++++++
 
-.. image:: https://badge.fury.io/py/pytorch-crf.svg
-   :target: https://badge.fury.io/py/pytorch-crf
-
-.. image:: https://travis-ci.org/kmkurn/pytorch-crf.svg?branch=master
-   :target: https://travis-ci.org/kmkurn/pytorch-crf
-
-.. image:: https://coveralls.io/repos/github/kmkurn/pytorch-crf/badge.svg?branch=master
-   :target: https://coveralls.io/github/kmkurn/pytorch-crf?branch=master
-
-.. image:: https://cdn.rawgit.com/syl20bnr/spacemacs/442d025779da2f62fc86c2082703697714db6514/assets/spacemacs-badge.svg
-   :target: http://spacemacs.org
-
 Conditional random field in `PyTorch <http://pytorch.org/>`_.
 
 Description
@@ -20,9 +8,7 @@ Description
 
 This package provides an implementation of `conditional random field
 <https://en.wikipedia.org/wiki/Conditional_random_field>`_ (CRF) in PyTorch.
-This implementation borrows mostly from `AllenNLP CRF module
-<https://github.com/allenai/allennlp/blob/master/allennlp/modules/conditional_ra
-ndom_field.py>`_ with some modifications.
+It is a fork of https://github.com/kmkurn/pytorch-crf with some modifications to enable half-precision training and allow class-weights for handeling class label imbalance.
 
 Requirements
 ============
@@ -35,11 +21,7 @@ Installation
 
 You can install with pip ::
 
-    pip install pytorch-crf
-
-Or, you can install from Github directly ::
-
-    pip install git+https://github.com/kmkurn/pytorch-crf#egg=pytorch_crf
+    pip install git+https://github.com/corresive/pytorch-crf#egg=pytorch_crf
 
 Examples
 ========

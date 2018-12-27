@@ -50,6 +50,10 @@ class CRF(nn.Module):
 
         self.reset_parameters()
 
+    @property
+    def uses_half_precision(self):
+        return all([x.dtype == torch.float16 for x in self.parameters()])
+
     def reset_parameters(self) -> None:
         """Initialize the transition parameters.
 
@@ -120,7 +124,10 @@ class CRF(nn.Module):
         if reduction == 'mean':
             return llh.mean()
         assert reduction == 'token_mean'
-        return llh.sum() / mask.float().sum()
+        mask = mask.float()
+        if self.uses_half_precision:
+            mask = mask.half()
+        return llh.sum() / mask.sum()
 
     def decode(self, emissions: torch.Tensor,
                mask: Optional[torch.ByteTensor] = None) -> List[List[int]]:
@@ -192,6 +199,8 @@ class CRF(nn.Module):
 
         seq_length, batch_size = tags.shape
         mask = mask.float()
+        if self.uses_half_precision:
+            mask = mask.half()
 
         # Start transition score and first emission
         # shape: (batch_size,)
